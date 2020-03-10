@@ -1,0 +1,71 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Part 4</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var config = {
+        type: Phaser.AUTO,
+        width: 800,
+        height: 600,
+        physics: {
+            default: 'arcade',
+            arcade: {
+                gravity: { y: 300 },
+                debug: false
+            }
+        },
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+
+    var platforms;
+
+    var game = new Phaser.Game(config);
+
+    function preload ()
+    {
+        this.load.image('forest', 'assets/forest.png');
+        this.load.image('floor', 'assets/floor.png');
+        this.load.image('coin', 'assets/coin.png');
+        this.load.image('bomb', 'assets/bomb.png');
+        
+    }
+
+    var platforms;
+
+    function create ()
+    {
+        this.add.image(400, 300, 'forest');
+
+        platforms = this.physics.add.staticGroup();
+
+        platforms.create(400, 568, 'floor').setScale(2).refreshBody();
+
+        platforms.create(600, 400, 'floor');
+        platforms.create(50, 250, 'floor');
+        platforms.create(750, 220, 'floor');
+		devlText = this.add.text(500, 555, 'made by MIRHOPE', { fontSize: '32px', fill: '#FFF' });
+    }
+
+    function update ()
+    {
+    }
+
+</script>
+
+</body>
+</html>
